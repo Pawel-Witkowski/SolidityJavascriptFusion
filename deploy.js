@@ -1,10 +1,15 @@
 const Web3 = require('web3');
 const HDWalletProvider = require('truffle-hdwallet-provider');
+const path = require('path');
+const fs = require('fs');
+
+const mnemonicPath = path.resolve(__dirname, 'mnemonic.txt');
+const mnemonic = fs.readFileSync(mnemonicPath, 'utf8');
 
 const {interface, bytecode} = require('./compile');
 
 const provider = new HDWalletProvider(
-    'obtain clock venue syrup fix unable adjust raw host trash engage pyramid',
+    mnemonic,
     'https://rinkeby.infura.io/v3/c523ed2b6e6d41a39da30e1f31dac95d'
 );
 
